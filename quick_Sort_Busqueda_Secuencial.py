@@ -31,18 +31,45 @@ total_rep =int(input("¿Cuántos repartidores participaron hoy?: "))
 if total_rep >= 1:
     for i in range(total_rep):
         print(f"\nRepartidor #{i + 1}")
+        while True:
+            nombre = input("Nombre: ").strip()
+            if nombre == "":
+                print("El nombre no puede estar vacío.  Intente de nuvoe")
+            elif nombre in repartidores:
+                print("El nombre ya fue ingresado.  Ingrese otro nombre")
+            else:
+                break
+        while True:
+            try:
+               cant_paquete = int(input("Ingrese la cantidad de paquetes:  "))
+               if cant_paquete < 0:
+                   print("No puede ingresar una cantidad menor a 1. Intente nuevamente.")
+               else:
+                   break
+            except ValueError:
+                print("Debe ingresar un número válido.  Intente de nuevo")
 
-        nombre = input("Nombre: ")
-        repartidores[nombre] = {}
+        while True:
+            zona = input("Ingrese la zona: ").strip()
+            if zona == "":
+                print("La zona no puede quedar vacía.  Intente de nuevo.")
+            else:
+                break
 
-        repartidores[nombre]["cant_paquete"] = int(input("Ingrese la cantidad de paquetes:  "))
-        repartidores[nombre]["zona"] = input("Ingrese la Zona: ")
+
+        repartidores[nombre] = {
+             "cant_paquete": cant_paquete,
+             "zona": zona
+    }
+
+
+
 #       print("\n")
 
     lista = list(repartidores.items())
     print(" -- Datos ingresados: -- ")
     for nombre, valor in lista:
-        print(f" - {nombre} con edad de: {valor['cant_paquete']} años entregó en zona: {valor['zona']} ")
+        print(f" - {nombre} entregó {valor['cant_paquete']} paquetes en zona: {valor['zona']} ")
 
     lista = list(repartidores.items())
     resultado = quick_sort(lista)
@@ -70,8 +97,9 @@ if total_rep >= 1:
     mayor_nombre, mayor_valor = resultado[-1]
     menor_nombre, menor_valor = resultado[0]
 
+
     print(f"Total de paquetes entregados: {total_entregas}")
-    print(f"El promedio de entregas es de: {prom}")
+    print(f"El promedio de entregas es de: {round(prom,2)}")
     print(f"El de mayor entregas fue: {mayor_nombre} ({mayor_valor['cant_paquete']})")
     print(f"El de menor entregas fue: {menor_nombre} ({menor_valor['cant_paquete']})")
 
