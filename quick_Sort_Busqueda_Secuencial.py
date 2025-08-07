@@ -26,7 +26,6 @@ def quick_sort(lista):
 
     return quick_sort(menores) + iguales + quick_sort(mayores)
 
-
 repartidores = {}
 total_rep =int(input("¿Cuántos repartidores participaron hoy?: "))
 if total_rep >= 1:
