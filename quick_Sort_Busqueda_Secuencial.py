@@ -20,9 +20,9 @@ def quick_sort(lista):
         return lista
 
     pivote = lista[0]
-    menores = [x for x in lista[1:] if x < pivote]
-    iguales = [x for x in lista if x == pivote]
-    mayores = [x for x in lista[1:] if x > pivote]
+    menores = [x for x in lista[1:] if x[1]["cant_paquete"] < pivote[1]["cant_paquete"]]
+    iguales = [x for x in lista if x[1]["cant_paquete"] == pivote[1]["cant_paquete"]]
+    mayores = [x for x in lista[1:] if x[1]["cant_paquete"] > pivote[1]["cant_paquete"]]
 
     return quick_sort(menores) + iguales + quick_sort(mayores)
 
@@ -38,11 +38,12 @@ if total_rep >= 1:
 
         repartidores[nombre]["cant_paquete"] = int(input("Ingrese la cantidad de paquetes:  "))
         repartidores[nombre]["zona"] = input("Ingrese la Zona: ")
+        print("\n")
 
-lista = list(repartidores.values())
-resultado = quick_sort(lista)
-for nombre, valor in resultado:
-    print(f"{nombre}: {valor}")
+    lista = list(repartidores.items())
+    resultado = quick_sort(lista)
+    for nombre, valor in resultado:
+        print(f" - {nombre} entregó {valor['cant_paquete']} paquetes en la zona {valor['zona']}")
 
 else:
     print("Ha ingresado un valor incorrecto, adiós")
