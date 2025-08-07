@@ -67,8 +67,14 @@ if total_rep >= 1:
     lista = list(repartidores.items())
     for nombre, valor in lista:
         total_entregas += valor['cant_paquete']
-    print(f"Total de paquetes entregados: {total_entregas}")
+    prom = total_entregas / len(repartidores)
+    mayor_nombre, mayor_valor = resultado[-1]
+    menor_nombre, menor_valor = resultado[0]
 
+    print(f"Total de paquetes entregados: {total_entregas}")
+    print(f"El promedio de entregas es de: {prom}")
+    print(f"El de mayor entregas fue: {mayor_nombre} ({mayor_valor['cant_paquete']})")
+    print(f"El de menor entregas fue: {menor_nombre} ({menor_valor['cant_paquete']})")
 
 
 
