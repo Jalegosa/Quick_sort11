@@ -38,11 +38,18 @@ if total_rep >= 1:
 
         repartidores[nombre]["cant_paquete"] = int(input("Ingrese la cantidad de paquetes:  "))
         repartidores[nombre]["zona"] = input("Ingrese la Zona: ")
-        print("\n")
+#       print("\n")
+
+    lista = list(repartidores.items())
+    print(" -- Datos ingresados: -- ")
+    for nombre, valor in lista:
+        print(f" - {nombre} con edad de: {valor['cant_paquete']} años entregó en zona: {valor['zona']} ")
 
     lista = list(repartidores.items())
     resultado = quick_sort(lista)
+    print("\n ---- Ranking -----")
     for nombre, valor in resultado:
+
         print(f" - {nombre} entregó {valor['cant_paquete']} paquetes en la zona {valor['zona']}")
 
 else:
