@@ -63,6 +63,13 @@ if total_rep >= 1:
         print("No hay ningún repartidor con ese nombre")
 
     print("\n ---- Estadísticas-----")
+    total_entregas =0
+    lista = list(repartidores.items())
+    for nombre, valor in lista:
+        total_entregas += valor['cant_paquete']
+    print(f"Total de paquetes entregados: {total_entregas}")
+
+
 
 
 else:
