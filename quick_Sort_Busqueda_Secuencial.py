@@ -48,9 +48,22 @@ if total_rep >= 1:
     lista = list(repartidores.items())
     resultado = quick_sort(lista)
     print("\n ---- Ranking -----")
-    for nombre, valor in resultado:
+    for i, (nombre, valor) in enumerate(resultado, start=1):
 
-        print(f" - {nombre} entregó {valor['cant_paquete']} paquetes en la zona {valor['zona']}")
+        print(f" {i} - {nombre} entregó {valor['cant_paquete']} paquetes en la zona {valor['zona']}")
+
+    lista = list(repartidores.items())
+
+    print("\n ---- Buscador-----")
+    buscado = input(f"Ingrese el nombre del repartidor: ")
+    if buscado in repartidores:
+        valor_a_buscar = repartidores[buscado]
+        print(f"{nombre} entregó {valor_a_buscar['cant_paquete']} paquete en la zona {valor_a_buscar['zona']}")
+    else:
+        print("No hay ningún repartidor con ese nombre")
+
+    print("\n ---- Estadísticas-----")
+
 
 else:
     print("Ha ingresado un valor incorrecto, adiós")
